@@ -544,7 +544,7 @@ resource "aws_ecs_service" "ignore_changes_task_definition" {
   triggers = local.redeployment_trigger
 
   lifecycle {
-    ignore_changes = [task_definition]
+    ignore_changes = [task_definition, capacity_provider_strategy]
   }
 
   # Avoid race condition on destroy.
@@ -850,7 +850,7 @@ resource "aws_ecs_service" "ignore_changes_desired_count" {
   triggers = local.redeployment_trigger
 
   lifecycle {
-    ignore_changes = [desired_count]
+    ignore_changes = [desired_count, capacity_provider_strategy]
   }
 
   # Avoid race condition on destroy.
